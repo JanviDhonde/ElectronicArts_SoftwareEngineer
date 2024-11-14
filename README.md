@@ -1,7 +1,7 @@
 ## Electronic Arts Software Engineering Job Simulation
 
 **ElectronicArts_SoftwareEngineer:** <br>
-I completed the Electronic Arts Software Engineering Job Simulation on Forage, where I proposed a new feature for The Sims 4, built class diagrams, and optimized the codebase in C++. I gained hands-on experience in game development, feature design, bug fixing, and data structures, and enhanced my communication and technical skills.
+I completed the Electronic Arts Software Engineering Job Simulation on Forage, where I proposed a new feature for The Sims 4, built class diagrams, and optimized the codebase in C++. I gained hands-on experience in game development, feature design, bug fixing, and data structures, and enhanced my communication and technical skills..
 
 **Repository Overview:**  
 This repository showcases my participation in the **Electronic Arts Software Engineering Virtual Experience** on the Forage platform. The simulation provided hands-on experience with key software engineering tasks, focusing on game development for **The Sims 4**. I worked on proposing new features, improving the codebase, and applying object-oriented design principles. This experience helped me refine my skills in **C++**, **class design**, and **game engine technology**.
