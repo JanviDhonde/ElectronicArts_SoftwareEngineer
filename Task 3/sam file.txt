@@ -1,0 +1,109 @@
+#pragma once
+
+#include <vector>
+#include <memory>
+
+/////////////////////////
+// Locomotion Strategy //
+/////////////////////////
+
+class Locomotion {
+public:
+    virtual void move() = 0;
+    virtual ~Locomotion() = default;
+};
+
+class Swim : public Locomotion {
+public:
+    void move() override;
+};
+
+class Crawl : public Locomotion {
+public:
+    void move() override;
+};
+
+class Stationary : public Locomotion {
+public:
+    void move() override;
+};
+
+/////////////////////
+// Action Strategy //
+/////////////////////
+
+class Action {
+public:
+    virtual void act() = 0;
+    virtual ~Action() = default;
+};
+
+class BlowBubble : public Action {
+public:
+    void act() override;
+};
+
+class PuffUp : public Action {
+public:
+    void act() override;
+};
+
+class ChangeColor : public Action {
+public:
+    void act() override;
+};
+
+///////////////////////
+// Resource Strategy //
+///////////////////////
+
+class Resource {
+public:
+    virtual void collect() = 0;
+    virtual ~Resource() = default;
+};
+
+class Pearl : public Resource {
+public:
+    void collect() override;
+};
+
+class Shell : public Resource {
+public:
+    void collect() override;
+};
+
+class FishFillet : public Resource {
+public:
+    void collect() override;
+};
+
+//////////////////////////////
+// Sea Creature Composition //
+//////////////////////////////
+
+class SeaCreature {
+private:
+    std::unique_ptr<Locomotion> locomotion;
+    std::vector<std::unique_ptr<Action>> actions;
+    std::vector<std::unique_ptr<Resource>> contained_resources;
+
+public:
+    void move() {
+        if (locomotion) {
+            locomotion->move();
+        }
+    }
+
+    void act() {
+        for (const auto& action : actions) {
+            action->act();
+        }
+    }
+
+    void collect_resources() {
+        for (const auto& resource : contained_resources) {
+            resource->collect();
+        }
+    }
+};

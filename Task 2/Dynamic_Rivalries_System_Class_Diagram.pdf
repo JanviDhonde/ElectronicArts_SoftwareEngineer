@@ -1,0 +1,93 @@
+// Dynamic Rivalries System
+digraph {
+	Game [label="Game
++ gameID: int
++ date: Date
++ teams: List[Team]
++ score: dict
++ outcome: str
+---
++ calculateOutcome(): str
++ updateRivalryMeter(): void
+"]
+	Team [label="Team
++ teamID: int
++ name: str
++ players: List[Player]
++ rivalryScore: int
+---
++ addRivalryScore(score: int): void
++ viewRivalryHistory(): List[RivalryHistory]
+"]
+	Player [label="Player
++ playerID: int
++ name: str
++ position: str
++ stats: dict
+---
++ addPerformance(performance: dict): void
++ getPlayerStats(): dict
+"]
+	RivalryMeter [label="RivalryMeter
++ meterID: int
++ team1: Team
++ team2: Team
++ score: int
++ status: str
+---
++ incrementScore(points: int): void
++ resetScore(): void
++ checkRivalryStatus(): str
+"]
+	RivalryHistory [label="RivalryHistory
++ historyID: int
++ team1: Team
++ team2: Team
++ games: List[Game]
+---
++ addGameRecord(game: Game): void
++ getRivalryHistory(): List[Game]
+"]
+	Leaderboard [label="Leaderboard
++ teams: List[Team]
++ rankings: dict
+---
++ updateRankings(): void
++ displayLeaderboard(): void
+"]
+	Season [label="Season
++ seasonID: int
++ teams: List[Team]
++ schedule: List[Game]
++ rivalries: List[RivalryMeter]
+---
++ generateSchedule(): void
++ calculateRivalryImpacts(): void
+"]
+	RewardSystem [label="RewardSystem
++ rewards: dict
++ milestones: List[int]
+---
++ assignReward(team: Team): void
++ checkMilestoneAchieved(team: Team): bool
+"]
+	StatsTracker [label="StatsTracker
++ teamStats: dict
++ playerStats: dict
++ rivalryStats: dict
+---
++ updateStats(entity: Any): void
++ getStats(entity: Any): dict
+"]
+	Game -> Team [label="has 2"]
+	Game -> RivalryMeter [label=uses]
+	Team -> Player [label="composed of"]
+	Team -> RivalryMeter [label="tracked by"]
+	Team -> RivalryHistory [label="recorded in"]
+	Season -> Game [label=contains]
+	Leaderboard -> Team [label=updates]
+	RewardSystem -> Team [label=assigns]
+	StatsTracker -> Team [label=monitors]
+	StatsTracker -> Player [label=monitors]
+	StatsTracker -> RivalryMeter [label=monitors]
+}
